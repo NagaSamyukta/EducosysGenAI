@@ -10,3 +10,5 @@ langchain_google_genai
 langchain_google_genai
 chromadb
 openai
+langchain_community
+bs4
