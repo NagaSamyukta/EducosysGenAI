@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 from langgraph.checkpoint.memory import InMemorySaver
-from langgraph.prebuilt import create_react_agent
+from langchain.agents import create_agent
 import streamlit as st
 
 st.title("Educosys Chatbot App")
@@ -13,12 +13,14 @@ st.title("Educosys Chatbot App")
 # list of messages that re-loads in front end. so to store it we need session state
 if "messages" not in st.session_state:
    st.session_state.messages = []
+checkpointer = InMemorySaver()
 
-agent = create_react_agent(
-   model="groq:llama-3.3-70b-versatile", 
-   tools=[], 
-   prompt="You are a helpful assistant"
+agent = create_agent(
+  model="openai:gpt-4o",
+  tools=[],
+  checkpointer=checkpointer,
 )
+
 
 def stream_graph_updates(user_input : str):
    assistant_response = ""

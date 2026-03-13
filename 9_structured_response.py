@@ -1,16 +1,17 @@
 
 from dotenv import load_dotenv
-from pydantic import BaseModel
 load_dotenv()
-from langgraph.prebuilt import create_react_agent
+from pydantic import BaseModel
 
+from langchain.agents import create_agent
+from langgraph.checkpoint.memory import InMemorySaver 
 
 class MailResponse(BaseModel):
    subject: str
    body: str
 
 
-agent = create_react_agent(
+agent = create_agent(
    model="groq:llama-3.3-70b-versatile", 
    tools=[], 
    response_format = MailResponse 

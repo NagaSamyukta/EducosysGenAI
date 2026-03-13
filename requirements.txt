@@ -2,6 +2,7 @@ langchain[groq]
 python-dotenv
 langgraph
 langchain
+langchain[agents]
 langchain-mcp-adapters
 langchain[openai]
 streamlit
@@ -13,3 +14,4 @@ openai
 langchain_community
 bs4
 langchain_chroma
+langgraph-checkpoint-sqlite

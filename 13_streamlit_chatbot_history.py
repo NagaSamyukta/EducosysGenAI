@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import uuid
 load_dotenv()
 from langgraph.checkpoint.memory import InMemorySaver
-from langgraph.prebuilt import create_react_agent
+from langchain.agents import create_agent
 
 st.set_page_config(page_title="Chatbot App", layout="wide")
 st.title("Chatbot App")
@@ -25,7 +25,7 @@ st.sidebar.title("Chats")
 # New Chat button
 if st.sidebar.button("New Chat"):
     checkpointer = InMemorySaver()
-    agent = create_react_agent(
+    agent = create_agent(
         model="groq:llama-3.3-70b-versatile",
         tools=[],
         checkpointer=checkpointer,

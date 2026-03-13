@@ -6,4 +6,4 @@ load_dotenv()
 
 model = init_chat_model("llama-3.3-70b-versatile", model_provider="groq")
 response = model.invoke("what does Modi do")
-print(response)
+print(response.content)

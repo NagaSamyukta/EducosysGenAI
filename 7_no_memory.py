@@ -1,21 +1,23 @@
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
 
-from langgraph.prebuilt import create_react_agent
+from langchain.agents import create_agent
 
 
-agent = create_react_agent(
-   model="groq:llama-3.3-70b-versatile", 
-   tools=[], 
-   prompt="You are a helpful assistant" 
+agent = create_agent(
+ model="groq:llama-3.3-70b-versatile",
+ tools=[]
 )
-
-
-# Run the agent
 response = agent.invoke(
-   {"messages": [{"role": "user", "content": "when was he born"}]}
+ {"messages": [{"role": "user", "content": "who is dhoni"}]}
 )
+print(response["messages"][-1].content)
 
 
-print(response)
+response = agent.invoke(
+ {"messages": [{"role": "user", "content": "when was he born?"}]}
+)
+print(response["messages"][-1].content)
+
